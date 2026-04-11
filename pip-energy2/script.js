@@ -129,9 +129,17 @@
     const navLinks = document.querySelector('.nav-links');
 
     if (mobileToggle) {
-        mobileToggle.addEventListener('click', () => {
+        mobileToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
             navLinks.classList.toggle('active');
             mobileToggle.classList.toggle('active');
+
+            // Prevent body scroll when menu is open
+            if (navLinks.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
         });
 
         // Close mobile menu when clicking a link
@@ -139,7 +147,19 @@
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
                 mobileToggle.classList.remove('active');
+                document.body.style.overflow = '';
             });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (navLinks.classList.contains('active') &&
+                !navLinks.contains(e.target) &&
+                !mobileToggle.contains(e.target)) {
+                navLinks.classList.remove('active');
+                mobileToggle.classList.remove('active');
+                document.body.style.overflow = '';
+            }
         });
     }
 
@@ -393,10 +413,38 @@
     });
 
     // ==========================================================================
+    // Mobile-Specific Optimizations
+    // ==========================================================================
+
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    const isTablet = /iPad|Android/i.test(navigator.userAgent) && window.innerWidth >= 768;
+
+    if (isMobile) {
+        // Disable 3D tilt on mobile for performance
+        cards.forEach(card => {
+            card.removeEventListener('mousemove', handleCardTilt);
+            card.removeEventListener('mouseleave', resetCardTilt);
+        });
+
+        // Optimize touch scrolling
+        document.body.style.webkitOverflowScrolling = 'touch';
+
+        // Add touch feedback for buttons
+        document.querySelectorAll('.btn, .solution-card, .impact-card').forEach(element => {
+            element.addEventListener('touchstart', function() {
+                this.style.opacity = '0.9';
+            });
+            element.addEventListener('touchend', function() {
+                this.style.opacity = '1';
+            });
+        });
+    }
+
+    // ==========================================================================
     // Cursor Enhancement for Premium Feel (Desktop Only)
     // ==========================================================================
 
-    if (window.innerWidth > 968) {
+    if (window.innerWidth > 968 && !isMobile) {
         const cursor = document.createElement('div');
         cursor.className = 'custom-cursor';
         document.body.appendChild(cursor);
