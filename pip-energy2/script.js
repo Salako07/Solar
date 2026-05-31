@@ -512,6 +512,389 @@
     }
 
     // ==========================================================================
+    // Load Calculator Functionality
+    // ==========================================================================
+
+    const calculatorState = {
+        appliances: [],
+        dailyConsumption: 0,
+        peakLoad: 0
+    };
+
+    // Preset configurations
+    const presets = {
+        small: [
+            { name: 'LED Bulbs (10W)', watts: 10, hours: 5, quantity: 10 },
+            { name: 'Ceiling Fan', watts: 75, hours: 8, quantity: 3 },
+            { name: 'Refrigerator', watts: 150, hours: 24, quantity: 1 },
+            { name: 'TV (LED)', watts: 80, hours: 6, quantity: 1 },
+            { name: 'Laptop', watts: 65, hours: 6, quantity: 1 },
+            { name: 'Phone Charger', watts: 10, hours: 3, quantity: 2 }
+        ],
+        medium: [
+            { name: 'LED Bulbs (10W)', watts: 10, hours: 6, quantity: 15 },
+            { name: 'Ceiling Fan', watts: 75, hours: 10, quantity: 5 },
+            { name: 'Refrigerator', watts: 150, hours: 24, quantity: 1 },
+            { name: 'Air Conditioner (1.5HP)', watts: 1200, hours: 8, quantity: 2 },
+            { name: 'TV (LED)', watts: 80, hours: 8, quantity: 2 },
+            { name: 'Laptop', watts: 65, hours: 8, quantity: 2 },
+            { name: 'Washing Machine', watts: 500, hours: 1, quantity: 1 },
+            { name: 'Microwave', watts: 1000, hours: 0.5, quantity: 1 },
+            { name: 'Water Pump', watts: 750, hours: 2, quantity: 1 }
+        ],
+        large: [
+            { name: 'LED Bulbs (10W)', watts: 10, hours: 8, quantity: 25 },
+            { name: 'Ceiling Fan', watts: 75, hours: 12, quantity: 8 },
+            { name: 'Refrigerator', watts: 150, hours: 24, quantity: 2 },
+            { name: 'Deep Freezer', watts: 200, hours: 24, quantity: 1 },
+            { name: 'Air Conditioner (1.5HP)', watts: 1200, hours: 10, quantity: 4 },
+            { name: 'TV (LED)', watts: 80, hours: 10, quantity: 3 },
+            { name: 'Laptop', watts: 65, hours: 10, quantity: 3 },
+            { name: 'Desktop Computer', watts: 200, hours: 8, quantity: 1 },
+            { name: 'Washing Machine', watts: 500, hours: 1.5, quantity: 1 },
+            { name: 'Microwave', watts: 1000, hours: 1, quantity: 1 },
+            { name: 'Electric Oven', watts: 2000, hours: 1, quantity: 1 },
+            { name: 'Water Heater', watts: 1500, hours: 2, quantity: 1 },
+            { name: 'Water Pump', watts: 750, hours: 3, quantity: 1 }
+        ],
+        office: [
+            { name: 'LED Bulbs (15W)', watts: 15, hours: 10, quantity: 20 },
+            { name: 'Ceiling Fan', watts: 75, hours: 10, quantity: 6 },
+            { name: 'Air Conditioner (2HP)', watts: 1500, hours: 10, quantity: 3 },
+            { name: 'Desktop Computer', watts: 200, hours: 10, quantity: 10 },
+            { name: 'Laptop', watts: 65, hours: 10, quantity: 5 },
+            { name: 'Printer/Copier', watts: 300, hours: 4, quantity: 2 },
+            { name: 'Water Dispenser', watts: 500, hours: 8, quantity: 2 },
+            { name: 'Refrigerator', watts: 150, hours: 24, quantity: 1 },
+            { name: 'Microwave', watts: 1000, hours: 1, quantity: 1 }
+        ]
+    };
+
+    // DOM elements
+    const addApplianceBtn = document.getElementById('addAppliance');
+    const appliancesList = document.getElementById('appliancesList');
+    const resetCalculatorBtn = document.getElementById('resetCalculator');
+    const presetButtons = document.querySelectorAll('.btn-preset');
+
+    // Form inputs
+    const nameInput = document.getElementById('applianceName');
+    const wattsInput = document.getElementById('applianceWatts');
+    const hoursInput = document.getElementById('applianceHours');
+    const quantityInput = document.getElementById('applianceQuantity');
+
+    // Result elements
+    const dailyConsumptionEl = document.getElementById('dailyConsumption');
+    const monthlyConsumptionEl = document.getElementById('monthlyConsumption');
+    const peakLoadEl = document.getElementById('peakLoad');
+    const systemSizeEl = document.getElementById('systemSize');
+    const panelCountEl = document.getElementById('panelCount');
+    const batteryCapacityEl = document.getElementById('batteryCapacity');
+    const annualSavingsEl = document.getElementById('annualSavings');
+
+    // Add appliance function
+    function addAppliance(name, watts, hours, quantity = 1) {
+        if (!name || !watts || !hours) {
+            alert('Please fill in all fields');
+            return;
+        }
+
+        const appliance = {
+            id: Date.now(),
+            name: name,
+            watts: parseFloat(watts),
+            hours: parseFloat(hours),
+            quantity: parseInt(quantity)
+        };
+
+        calculatorState.appliances.push(appliance);
+        renderAppliances();
+        calculateResults();
+        clearInputs();
+    }
+
+    // Render appliances list
+    function renderAppliances() {
+        if (calculatorState.appliances.length === 0) {
+            appliancesList.innerHTML = '<p style="text-align: center; opacity: 0.5; padding: 2rem;">No appliances added yet. Add your first appliance above or use a preset.</p>';
+            return;
+        }
+
+        appliancesList.innerHTML = calculatorState.appliances.map(appliance => {
+            const dailyEnergy = (appliance.watts * appliance.hours * appliance.quantity / 1000).toFixed(2);
+            return `
+                <div class="appliance-item">
+                    <div class="appliance-info">
+                        <div class="appliance-name">${appliance.name}</div>
+                        <div class="appliance-details">
+                            ${appliance.watts}W × ${appliance.hours}h × ${appliance.quantity} unit${appliance.quantity > 1 ? 's' : ''}
+                        </div>
+                    </div>
+                    <div class="appliance-consumption">${dailyEnergy} kWh/day</div>
+                    <button class="btn-remove-appliance" onclick="removeAppliance(${appliance.id})">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M5 5L15 15M5 15L15 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </button>
+                </div>
+            `;
+        }).join('');
+    }
+
+    // Remove appliance function (needs to be global)
+    window.removeAppliance = function(id) {
+        calculatorState.appliances = calculatorState.appliances.filter(a => a.id !== id);
+        renderAppliances();
+        calculateResults();
+    };
+
+    // Calculate results
+    function calculateResults() {
+        // Calculate daily consumption
+        let totalDailyConsumption = 0;
+        let totalPeakLoad = 0;
+
+        calculatorState.appliances.forEach(appliance => {
+            const dailyEnergy = appliance.watts * appliance.hours * appliance.quantity / 1000;
+            totalDailyConsumption += dailyEnergy;
+            totalPeakLoad += appliance.watts * appliance.quantity;
+        });
+
+        calculatorState.dailyConsumption = totalDailyConsumption;
+        calculatorState.peakLoad = totalPeakLoad;
+
+        // Update display
+        dailyConsumptionEl.textContent = totalDailyConsumption.toFixed(2) + ' kWh';
+        monthlyConsumptionEl.textContent = (totalDailyConsumption * 30).toFixed(2) + ' kWh';
+        peakLoadEl.textContent = totalPeakLoad.toLocaleString() + ' W';
+
+        // Calculate system size (with 20% safety margin, 5 peak sun hours)
+        const peakSunHours = 5;
+        const safetyMargin = 1.2;
+        const systemSize = (totalDailyConsumption / peakSunHours) * safetyMargin;
+        systemSizeEl.textContent = systemSize.toFixed(2) + ' kW';
+
+        // Calculate number of panels (assuming 400W panels)
+        const panelWattage = 400;
+        const panelCount = Math.ceil((systemSize * 1000) / panelWattage);
+        panelCountEl.textContent = panelCount + ' panels';
+
+        // Calculate battery capacity (1 day backup)
+        const batteryCapacity = totalDailyConsumption * 1.2; // 20% extra for efficiency loss
+        batteryCapacityEl.textContent = batteryCapacity.toFixed(2) + ' kWh';
+
+        // Calculate annual savings (assuming ₦205.50 per kWh)
+        const gridRate = 205.50;
+        const annualSavings = totalDailyConsumption * 365 * gridRate;
+        annualSavingsEl.textContent = '₦' + annualSavings.toLocaleString('en-NG', { maximumFractionDigits: 0 });
+    }
+
+    // Clear input fields
+    function clearInputs() {
+        nameInput.value = '';
+        wattsInput.value = '';
+        hoursInput.value = '';
+        quantityInput.value = '1';
+    }
+
+    // Reset calculator
+    function resetCalculator() {
+        if (calculatorState.appliances.length === 0) return;
+
+        if (confirm('Are you sure you want to reset the calculator? All appliances will be removed.')) {
+            calculatorState.appliances = [];
+            renderAppliances();
+            calculateResults();
+
+            // Remove active state from presets
+            presetButtons.forEach(btn => btn.classList.remove('active'));
+        }
+    }
+
+    // Load preset
+    function loadPreset(presetName) {
+        calculatorState.appliances = [];
+
+        const presetData = presets[presetName];
+        presetData.forEach(appliance => {
+            calculatorState.appliances.push({
+                id: Date.now() + Math.random(),
+                name: appliance.name,
+                watts: appliance.watts,
+                hours: appliance.hours,
+                quantity: appliance.quantity
+            });
+        });
+
+        renderAppliances();
+        calculateResults();
+
+        // Update active state
+        presetButtons.forEach(btn => {
+            if (btn.dataset.preset === presetName) {
+                btn.classList.add('active');
+            } else {
+                btn.classList.remove('active');
+            }
+        });
+    }
+
+    // Event listeners
+    if (addApplianceBtn) {
+        addApplianceBtn.addEventListener('click', () => {
+            addAppliance(
+                nameInput.value.trim(),
+                wattsInput.value,
+                hoursInput.value,
+                quantityInput.value || 1
+            );
+        });
+
+        // Add on Enter key
+        [nameInput, wattsInput, hoursInput, quantityInput].forEach(input => {
+            if (input) {
+                input.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        addAppliance(
+                            nameInput.value.trim(),
+                            wattsInput.value,
+                            hoursInput.value,
+                            quantityInput.value || 1
+                        );
+                    }
+                });
+            }
+        });
+    }
+
+    if (resetCalculatorBtn) {
+        resetCalculatorBtn.addEventListener('click', resetCalculator);
+    }
+
+    presetButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            loadPreset(btn.dataset.preset);
+        });
+    });
+
+    // Initialize calculator display
+    if (appliancesList) {
+        renderAppliances();
+        calculateResults();
+    }
+
+    // ==========================================================================
+    // Project Gallery Functionality
+    // ==========================================================================
+
+    class ProjectGallery {
+        constructor(galleryElement) {
+            this.gallery = galleryElement;
+            this.track = galleryElement.querySelector('.gallery-track');
+            this.images = galleryElement.querySelectorAll('.project-image');
+            this.prevBtn = galleryElement.querySelector('.gallery-prev');
+            this.nextBtn = galleryElement.querySelector('.gallery-next');
+            this.indicators = galleryElement.querySelectorAll('.indicator');
+            this.currentIndex = 0;
+            this.totalImages = this.images.length;
+
+            this.init();
+        }
+
+        init() {
+            // Navigation button events
+            if (this.prevBtn) {
+                this.prevBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    this.prev();
+                });
+            }
+
+            if (this.nextBtn) {
+                this.nextBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    this.next();
+                });
+            }
+
+            // Indicator click events
+            this.indicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    this.goToSlide(index);
+                });
+            });
+
+            // Keyboard navigation
+            this.gallery.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft') this.prev();
+                if (e.key === 'ArrowRight') this.next();
+            });
+
+            // Touch/Swipe support for mobile
+            let touchStartX = 0;
+            let touchEndX = 0;
+
+            this.track.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+
+            this.track.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                this.handleSwipe(touchStartX, touchEndX);
+            }, { passive: true });
+        }
+
+        handleSwipe(startX, endX) {
+            const threshold = 50;
+            const diff = startX - endX;
+
+            if (Math.abs(diff) > threshold) {
+                if (diff > 0) {
+                    this.next(); // Swipe left
+                } else {
+                    this.prev(); // Swipe right
+                }
+            }
+        }
+
+        next() {
+            this.currentIndex = (this.currentIndex + 1) % this.totalImages;
+            this.updateGallery();
+        }
+
+        prev() {
+            this.currentIndex = (this.currentIndex - 1 + this.totalImages) % this.totalImages;
+            this.updateGallery();
+        }
+
+        goToSlide(index) {
+            this.currentIndex = index;
+            this.updateGallery();
+        }
+
+        updateGallery() {
+            // Move the track
+            const offset = -this.currentIndex * 100;
+            this.track.style.transform = `translateX(${offset}%)`;
+
+            // Update indicators
+            this.indicators.forEach((indicator, index) => {
+                if (index === this.currentIndex) {
+                    indicator.classList.add('active');
+                } else {
+                    indicator.classList.remove('active');
+                }
+            });
+        }
+    }
+
+    // Initialize all project galleries
+    const projectGalleries = document.querySelectorAll('.project-gallery');
+    projectGalleries.forEach(gallery => {
+        new ProjectGallery(gallery);
+    });
+
+    // ==========================================================================
     // Console Message
     // ==========================================================================
 
