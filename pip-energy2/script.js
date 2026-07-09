@@ -304,7 +304,7 @@
     // ==========================================================================
 
     function preloadImages() {
-        const images = ['logo.jpg'];
+        const images = ['logo-dark.png', 'logo-light.png'];
         images.forEach(src => {
             const img = new Image();
             img.src = src;
@@ -898,9 +898,9 @@
     // Console Message
     // ==========================================================================
 
-    console.log('%c⚡ Pip Energy - Engineering Tomorrow\'s Sustainable Future',
-        'font-size: 16px; font-weight: bold; color: #3E8E6A;');
+    console.log('%c⚡ PIP Energy - Engineering Tomorrow\'s Sustainable Future',
+        'font-size: 16px; font-weight: bold; color: #81A64A;');
     console.log('%cBuilt with precision, powered by innovation',
-        'font-size: 12px; color: #1B3A57;');
+        'font-size: 12px; color: #12140E;');
 
 })();
