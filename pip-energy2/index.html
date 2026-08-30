@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="theme-color" content="#4D6329">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Pip Energy - Building Nigeria's Solar Future</title>
+    <meta name="description" content="Premium, reliable, and intelligently designed energy infrastructure for forward-thinking businesses and residences in Nigeria.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600&family=Raleway:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="favicon.png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Top Navigation Bar -->
+    <nav class="nav" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo" aria-label="Pip Energy Home">
+                <img src="assets/pip-logo.png" alt="Pip Energy" class="logo-img">
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="#solutions" class="nav-link">Solutions</a>
+                <a href="#technology" class="nav-link">Technology</a>
+                <a href="#shield" class="nav-link">Pip Shield</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#calculator" class="nav-link">Calculator</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#contact" class="btn btn-nav-contact">Contact Us</a>
+            </div>
+            <button class="nav-mobile-toggle" id="mobileToggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- 1. Hero Section -->
+    <header class="hero" id="hero">
+        <div class="hero-bg-container">
+            <img src="assets/hero-bg.png" alt="Solar Energy System" class="hero-bg-image">
+            <div class="hero-gradient-overlay"></div>
+        </div>
+        
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-heading">
+                    Building Nigeria's <br>
+                    <span class="hero-heading-accent">Solar Future</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Premium, reliable, and intelligently designed energy infrastructure for forward-thinking businesses and residences.
+                </p>
+                <div class="hero-actions">
+                    <a href="#solutions" class="btn btn-hero-explore">Explore Solutions</a>
+                </div>
+            </div>
+        </div>
+
+        <a href="#solutions" class="hero-scroll-indicator" aria-label="Scroll to explore">
+            <div class="mouse-icon">
+                <div class="mouse-wheel"></div>
+            </div>
+            <span class="scroll-text">SCROLL TO EXPLORE</span>
+        </a>
+    </header>
+
+    <!-- 2. Solutions Section -->
+    <section class="solutions-section" id="solutions">
+        <div class="section-container">
+            <div class="section-header text-center">
+                <span class="badge-label">SOLUTIONS</span>
+                <h2 class="section-title">Solar Solutions For Every Business</h2>
+            </div>
+
+            <div class="solutions-grid">
+                <!-- Retail & Hospitality -->
+                <div class="solution-card">
+                    <div class="solution-image-wrap">
+                        <img src="assets/sol-retail.png" alt="Retail & Hospitality Solar Solutions" class="solution-card-img">
+                    </div>
+                    <div class="solution-card-body">
+                        <h3 class="solution-card-title">Retail & Hospitality</h3>
+                        <span class="solution-card-tag">Pip Business • 15-30kWp</span>
+                        <p class="solution-card-desc">
+                            Ensure uninterrupted customer experiences with reliable power for lighting, POS, and essential cooling.
+                        </p>
+                        <a href="#calculator" class="solution-link" data-preset="retail">
+                            <span>Learn more</span>
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" class="link-arrow">
+                                <path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- HNI Prestige -->
+                <div class="solution-card">
+                    <div class="solution-image-wrap">
+                        <img src="assets/sol-hni.png" alt="HNI Prestige Luxury Residences" class="solution-card-img">
+                    </div>
+                    <div class="solution-card-body">
+                        <h3 class="solution-card-title">HNI Prestige</h3>
+                        <span class="solution-card-tag">Premium Properties</span>
+                        <p class="solution-card-desc">
+                            Aesthetically integrated, high-capacity solar solutions for luxury residences demanding flawless energy.
+                        </p>
+                        <a href="#calculator" class="solution-link" data-preset="residential">
+                            <span>Learn more</span>
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" class="link-arrow">
+                                <path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Healthcare -->
+                <div class="solution-card">
+                    <div class="solution-image-wrap">
+                        <img src="assets/sol-health.png" alt="Healthcare Solar Solutions" class="solution-card-img">
+                    </div>
+                    <div class="solution-card-body">
+                        <h3 class="solution-card-title">Healthcare</h3>
+                        <span class="solution-card-tag">Clinics & Labs • 20-50kWp</span>
+                        <p class="solution-card-desc">
+                            Critical power reliability for sensitive medical equipment, cold storage, and 24/7 patient care facilities.
+                        </p>
+                        <a href="#calculator" class="solution-link" data-preset="clinic">
+                            <span>Learn more</span>
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" class="link-arrow">
+                                <path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Industrial & Manufacturing -->
+                <div class="solution-card">
+                    <div class="solution-image-wrap">
+                        <img src="assets/sol-industrial.png" alt="Industrial & Manufacturing Solar Arrays" class="solution-card-img">
+                    </div>
+                    <div class="solution-card-body">
+                        <h3 class="solution-card-title">Industrial & Manufacturing</h3>
+                        <span class="solution-card-tag">Heavy Duty • 50-200kWp</span>
+                        <p class="solution-card-desc">
+                            Robust energy infrastructure designed to handle heavy loads, reducing operational costs significantly.
+                        </p>
+                        <a href="#calculator" class="solution-link" data-preset="factory">
+                            <span>Learn more</span>
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" class="link-arrow">
+                                <path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Technology Section -->
+    <section class="technology-section" id="technology">
+        <div class="section-container">
+            <div class="section-header text-center">
+                <h2 class="section-title text-dark">Premium Components</h2>
+                <p class="section-subtitle">
+                    We only use top-tier, globally recognized brands to ensure your system performs flawlessly for decades.
+                </p>
+            </div>
+
+            <div class="tech-cards-grid">
+                <!-- Tier 1 Panels -->
+                <div class="tech-card">
+                    <div class="tech-icon-container">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                            <rect x="3" y="5" width="26" height="22" rx="3" stroke="#748C4D" stroke-width="2.5"/>
+                            <line x1="3" y1="16" x2="29" y2="16" stroke="#748C4D" stroke-width="2"/>
+                            <line x1="16" y1="5" x2="16" y2="27" stroke="#748C4D" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h4 class="tech-card-title">Tier 1 Panels</h4>
+                    <p class="tech-card-desc">
+                        High-efficiency modules designed to perform even in low light conditions.
+                    </p>
+                </div>
+
+                <!-- Lithium Storage -->
+                <div class="tech-card">
+                    <div class="tech-icon-container">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                            <rect x="8" y="7" width="16" height="20" rx="3" stroke="#748C4D" stroke-width="2.5"/>
+                            <path d="M13 3H19V7H13V3Z" fill="#748C4D"/>
+                            <path d="M16 11V17M13 14H19" stroke="#748C4D" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h4 class="tech-card-title">Lithium Storage</h4>
+                    <p class="tech-card-desc">
+                        Safe, long-lasting batteries with deep depth of discharge capabilities.
+                    </p>
+                </div>
+
+                <!-- Smart Inverters -->
+                <div class="tech-card">
+                    <div class="tech-icon-container">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                            <rect x="4" y="6" width="24" height="20" rx="3" stroke="#748C4D" stroke-width="2.5"/>
+                            <path d="M10 16C12 11 14 21 16 16C18 11 20 21 22 16" stroke="#748C4D" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h4 class="tech-card-title">Smart Inverters</h4>
+                    <p class="tech-card-desc">
+                        Intelligent power management for seamless transition during grid failures.
+                    </p>
+                </div>
+
+                <!-- 24/7 Monitoring -->
+                <div class="tech-card">
+                    <div class="tech-icon-container">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                            <circle cx="16" cy="16" r="11" stroke="#748C4D" stroke-width="2.5"/>
+                            <path d="M16 9V16L21 19" stroke="#748C4D" stroke-width="2.5" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h4 class="tech-card-title">24/7 Monitoring</h4>
+                    <p class="tech-card-desc">
+                        Real-time app access to track your generation, consumption, and battery health.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Partners / Backed By Marquee -->
+    <section class="partners-section">
+        <div class="partners-header text-center">
+            <span class="partners-label">BACKED BY TRUSTED NAMES</span>
+        </div>
+        <div class="marquee-track-container">
+            <div class="marquee-track">
+                <!-- Group 1 -->
+                <div class="marquee-item">
+                    <svg height="36" viewBox="0 0 120 36" fill="none"><text x="10" y="26" font-family="Inter, sans-serif" font-size="22" font-weight="700" fill="#75796B">ZOHO</text></svg>
+                </div>
+                <div class="marquee-item">
+                    <svg height="36" viewBox="0 0 120 36" fill="none"><text x="10" y="26" font-family="Inter, sans-serif" font-size="22" font-weight="700" fill="#75796B">brevo</text></svg>
+                </div>
+                <div class="marquee-item">
+                    <svg height="36" viewBox="0 0 130 36" fill="none"><text x="10" y="26" font-family="Inter, sans-serif" font-size="22" font-weight="700" fill="#75796B">apollo.io</text></svg>
+                </div>
+                <div class="marquee-item">
+                    <svg height="36" viewBox="0 0 120 36" fill="none"><text x="10" y="26" font-family="Inter, sans-serif" font-size="22" font-weight="700" fill="#75796B">Google</text></svg>
+                </div>
+                
+                <!-- Group 2 (Duplicate for infinite scroll) -->
+                <div class="marquee-item">
+                    <svg height="36" viewBox="0 0 120 36" fill="none"><text x="10" y="26" font-family="Inter, sans-serif" font-size="22" font-weight="700" fill="#75796B">ZOHO</text></svg>
+                </div>
+                <div class="marquee-item">
+                    <svg height="36" viewBox="0 0 120 36" fill="none"><text x="10" y="26" font-family="Inter, sans-serif" font-size="22" font-weight="700" fill="#75796B">brevo</text></svg>
+                </div>
+                <div class="marquee-item">
+                    <svg height="36" viewBox="0 0 130 36" fill="none"><text x="10" y="26" font-family="Inter, sans-serif" font-size="22" font-weight="700" fill="#75796B">apollo.io</text></svg>
+                </div>
+                <div class="marquee-item">
+                    <svg height="36" viewBox="0 0 120 36" fill="none"><text x="10" y="26" font-family="Inter, sans-serif" font-size="22" font-weight="700" fill="#75796B">Google</text></svg>
+                </div>
+
+                <!-- Group 3 (Duplicate for smooth wrap) -->
+                <div class="marquee-item">
+                    <svg height="36" viewBox="0 0 120 36" fill="none"><text x="10" y="26" font-family="Inter, sans-serif" font-size="22" font-weight="700" fill="#75796B">ZOHO</text></svg>
+                </div>
+                <div class="marquee-item">
+                    <svg height="36" viewBox="0 0 120 36" fill="none"><text x="10" y="26" font-family="Inter, sans-serif" font-size="22" font-weight="700" fill="#75796B">brevo</text></svg>
+                </div>
+                <div class="marquee-item">
+                    <svg height="36" viewBox="0 0 130 36" fill="none"><text x="10" y="26" font-family="Inter, sans-serif" font-size="22" font-weight="700" fill="#75796B">apollo.io</text></svg>
+                </div>
+                <div class="marquee-item">
+                    <svg height="36" viewBox="0 0 120 36" fill="none"><text x="10" y="26" font-family="Inter, sans-serif" font-size="22" font-weight="700" fill="#75796B">Google</text></svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Recent Installations / Projects -->
+    <section class="projects-section" id="projects">
+        <div class="section-container">
+            <div class="projects-header">
+                <div>
+                    <h2 class="section-title text-dark">Recent Installations</h2>
+                    <p class="section-subtitle">See how we are transforming energy independence across Nigeria.</p>
+                </div>
+                <a href="#contact" class="projects-view-all">
+                    <span>View All</span>
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                        <path d="M3 9H15M15 9L9 3M15 9L9 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+            </div>
+
+            <div class="projects-grid">
+                <!-- Lekki Phase 1 -->
+                <div class="project-showcase-card">
+                    <img src="assets/proj-lekki.png" alt="Lekki Phase 1 Residence" class="project-img">
+                    <div class="project-overlay">
+                        <h3 class="project-name">Lekki Phase 1 Residence</h3>
+                        <p class="project-spec">15kW System with 20kWh Storage</p>
+                    </div>
+                </div>
+
+                <!-- Victoria Island Corporate HQ -->
+                <div class="project-showcase-card">
+                    <img src="assets/proj-vi.png" alt="Victoria Island Corporate HQ" class="project-img">
+                    <div class="project-overlay">
+                        <h3 class="project-name">Victoria Island Corporate HQ</h3>
+                        <p class="project-spec">50kW Commercial Array</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Process Section -->
+    <section class="process-section" id="process">
+        <div class="section-container">
+            <div class="section-header text-center">
+                <h2 class="section-title text-dark">Our Simple Process</h2>
+                <p class="section-subtitle">From initial consultation to turning on the lights, we handle everything.</p>
+            </div>
+
+            <div class="process-steps-grid">
+                <!-- Step 1 -->
+                <div class="process-step-item">
+                    <div class="process-badge-circle">
+                        <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+                            <path d="M5 22V8C5 6.34315 6.34315 5 8 5H22C23.6569 5 25 6.34315 25 8V18C25 19.6569 23.6569 21 22 21H10L5 25V22Z" stroke="#748C4D" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h4 class="process-step-title">1. Consultation</h4>
+                    <p class="process-step-desc">We assess your energy needs and site feasibility.</p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="process-step-item">
+                    <div class="process-badge-circle">
+                        <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+                            <rect x="5" y="5" width="20" height="20" rx="3" stroke="#748C4D" stroke-width="2.5"/>
+                            <path d="M5 12H25M12 5V25" stroke="#748C4D" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h4 class="process-step-title">2. Custom Design</h4>
+                    <p class="process-step-desc">Our technical team creates a tailored system layout.</p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="process-step-item">
+                    <div class="process-badge-circle">
+                        <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+                            <path d="M19 6L24 11L11 24H6V19L19 6Z" stroke="#748C4D" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h4 class="process-step-title">3. Installation</h4>
+                    <p class="process-step-desc">Professionally installed by our certified technicians.</p>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="process-step-item">
+                    <div class="process-badge-circle">
+                        <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+                            <path d="M15 4V8M15 22V26M4 15H8M22 15H26M8.2 8.2L11 11M19 19L21.8 21.8M8.2 21.8L11 19M19 11L21.8 8.2" stroke="#748C4D" stroke-width="2.5" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h4 class="process-step-title">4. Support</h4>
+                    <p class="process-step-desc">Ongoing maintenance and 24/7 monitoring.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Load Calculator Section -->
+    <section class="calculator-section" id="calculator">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="badge-label">LOAD CALCULATOR</span>
+                <h2 class="section-title">Calculate Your Business Energy Needs</h2>
+            </div>
+
+            <div class="calculator-layout-grid">
+                <!-- Left: Appliance Form & Presets -->
+                <div class="calc-form-container">
+                    <h3 class="calc-form-title">Add Your Appliances</h3>
+
+                    <!-- Quick Presets -->
+                    <div class="calc-presets-wrap">
+                        <label class="calc-field-label">Quick Presets</label>
+                        <div class="presets-buttons-row">
+                            <button type="button" class="btn-preset active" data-preset="retail">Retail Store</button>
+                            <button type="button" class="btn-preset" data-preset="restaurant">Restaurant</button>
+                            <button type="button" class="btn-preset" data-preset="clinic">Clinic</button>
+                            <button type="button" class="btn-preset" data-preset="factory">Small Factory</button>
+                        </div>
+                    </div>
+
+                    <!-- Add Appliance Row -->
+                    <div class="calc-add-row">
+                        <div class="calc-input-group flex-2">
+                            <label for="applianceSelect" class="calc-field-label">Appliance</label>
+                            <select id="applianceSelect" class="calc-select">
+                                <option value="ac15" data-watts="1200" data-hours="8">Air Conditioner (1.5 HP)</option>
+                                <option value="ac20" data-watts="1800" data-hours="8">Air Conditioner (2.0 HP)</option>
+                                <option value="freezer" data-watts="350" data-hours="24">Industrial Freezers / Chillers</option>
+                                <option value="fridge" data-watts="180" data-hours="24">Standard Refrigerator</option>
+                                <option value="lights" data-watts="15" data-hours="10">Commercial Lighting (Per Bulb)</option>
+                                <option value="pos" data-watts="120" data-hours="12">POS & Desktop Computer</option>
+                                <option value="pump" data-watts="750" data-hours="3">Water Pump (1 HP)</option>
+                                <option value="custom" data-watts="500" data-hours="6">Custom Equipment</option>
+                            </select>
+                        </div>
+
+                        <div class="calc-input-group flex-1">
+                            <label for="applianceQty" class="calc-field-label">Quantity</label>
+                            <input type="number" id="applianceQty" class="calc-input" value="1" min="1" max="100">
+                        </div>
+
+                        <div class="calc-input-group flex-1">
+                            <label for="applianceHours" class="calc-field-label">Hours/Day</label>
+                            <input type="number" id="applianceHours" class="calc-input" value="8" min="1" max="24">
+                        </div>
+
+                        <button type="button" id="btnAddAppliance" class="btn btn-calc-add">Add</button>
+                    </div>
+
+                    <!-- Added Items List -->
+                    <div class="added-appliances-list" id="addedAppliancesList">
+                        <!-- Populated dynamically by script.js -->
+                    </div>
+                </div>
+
+                <!-- Right: Energy Profile Card -->
+                <div class="calc-profile-card">
+                    <div class="calc-profile-top">
+                        <h3 class="profile-card-title">Your Energy Profile</h3>
+
+                        <div class="profile-stat-box">
+                            <span class="profile-stat-label">ESTIMATED DAILY LOAD</span>
+                            <div class="profile-stat-value-group">
+                                <span class="profile-stat-number" id="profileDailyLoad">45</span>
+                                <span class="profile-stat-unit">kWh</span>
+                            </div>
+                        </div>
+
+                        <div class="profile-spec-row">
+                            <span class="profile-stat-label">RECOMMENDED SYSTEM SIZE</span>
+                            <h4 class="profile-spec-heading" id="profileSystemSize">15 kWp Solar + 20 kWh Battery</h4>
+                        </div>
+
+                        <div class="profile-spec-row">
+                            <span class="profile-stat-label">ESTIMATED ANNUAL SAVINGS (NAIRA)</span>
+                            <h4 class="profile-spec-savings" id="profileAnnualSavings">₦ 3,200,000</h4>
+                        </div>
+                    </div>
+
+                    <div class="calc-profile-bottom">
+                        <a href="https://wa.me/2348000000000?text=Hi%20Pip%20Energy,%20I%20calculated%20my%20energy%20needs%20on%20your%20website" target="_blank" rel="noopener noreferrer" class="btn btn-quote-action" id="btnQuoteAction">
+                            Request Detailed Quote
+                        </a>
+                        <p class="profile-tariff-disclaimer">Assumes current grid tariff of ₦225/kWh</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. About & Pip Shield Section -->
+    <section class="about-section" id="about">
+        <div class="section-container">
+            <div class="about-grid-layout" id="shield">
+                <!-- Left: Content & Badges -->
+                <div class="about-text-content">
+                    <h2 class="section-title text-dark">
+                        Nigeria's Most <br>
+                        Trusted Solar <br>
+                        Partner
+                    </h2>
+                    
+                    <div class="about-paragraphs">
+                        <p>
+                            At Pip Energy, we believe that reliable power is not a luxury, it is the foundation of economic growth. We are on a mission to eliminate energy poverty and the financial risks associated with unreliable grid power and expensive diesel generators.
+                        </p>
+                        <p>
+                            By combining top-tier global technology with deep local expertise and our innovative Pip Shield insurance, we deliver energy solutions that businesses can truly bank on.
+                        </p>
+                    </div>
+
+                    <div class="about-features-list">
+                        <!-- Feature 1 -->
+                        <div class="about-feature-item">
+                            <div class="feature-icon-wrap">
+                                <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                                    <path d="M11 2L13.8 7.6L20 8.5L15.5 12.9L16.6 19.1L11 16.1L5.4 19.1L6.5 12.9L2 8.5L8.2 7.6L11 2Z" stroke="#4D6329" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <div class="feature-text-wrap">
+                                <h5 class="feature-title">Tier-1 Equipment</h5>
+                                <p class="feature-desc">We only deploy technology from globally bankable manufacturers, ensuring 25+ years of performance.</p>
+                            </div>
+                        </div>
+
+                        <!-- Feature 2 -->
+                        <div class="about-feature-item">
+                            <div class="feature-icon-wrap">
+                                <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                                    <path d="M11 2L3 5V11C3 16 6.5 20.5 11 21.5C15.5 20.5 19 16 19 11V5L11 2Z" stroke="#4D6329" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <div class="feature-text-wrap">
+                                <h5 class="feature-title">Risk-Free Operation (Pip Shield)</h5>
+                                <p class="feature-desc">Comprehensive insurance and O&M plans mean zero unexpected costs for your business.</p>
+                            </div>
+                        </div>
+
+                        <!-- Feature 3 -->
+                        <div class="about-feature-item">
+                            <div class="feature-icon-wrap">
+                                <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                                    <path d="M11 11C13.2091 11 15 9.20914 15 7C15 4.79086 13.2091 3 11 3C8.79086 3 7 4.79086 7 7C7 9.20914 8.79086 11 11 11Z" stroke="#4D6329" stroke-width="2"/>
+                                    <path d="M4 19C4 16 7 14 11 14C15 14 18 16 18 19" stroke="#4D6329" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                            </div>
+                            <div class="feature-text-wrap">
+                                <h5 class="feature-title">Local Engineering Excellence</h5>
+                                <p class="feature-desc">Designed, installed, and maintained by certified Nigerian engineers who understand local conditions.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Photo with Floating Badge -->
+                <div class="about-photo-wrapper">
+                    <img src="assets/about-team.png" alt="Pip Energy Engineers" class="about-team-img">
+                    <div class="floating-exp-badge">
+                        <div class="badge-icon-circ">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M10 2V6M10 14V18M2 10H6M14 10H18M4.3 4.3L7.1 7.1M12.9 12.9L15.7 15.7M4.3 15.7L7.1 12.9M12.9 7.1L15.7 4.3" stroke="#FAFFE9" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <div class="badge-text-group">
+                            <span class="badge-title">10+ Years</span>
+                            <span class="badge-subtitle">Industry Experience</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. Final CTA Section -->
+    <section class="final-cta-section" id="contact">
+        <div class="cta-decorative-blur"></div>
+        <div class="section-container">
+            <div class="cta-inner-card">
+                <h2 class="cta-headline">
+                    Ready to Secure Your Power <br>
+                    and Protect It?
+                </h2>
+                <p class="cta-subtext">
+                    Book a free, no-obligation energy audit with our engineering team today and discover how much you could save.
+                </p>
+                <div class="cta-buttons-wrap">
+                    <a href="https://wa.me/2348000000000?text=Hi%20Pip%20Energy,%20I%20would%20like%20to%20start%20a%20consultation" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp-action">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2ZM12.05 20.15C10.57 20.15 9.12 19.76 7.85 19.01L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 14.99 3.81 13.47 3.81 11.91C3.81 7.37 7.5 3.69 12.05 3.69C14.25 3.69 16.31 4.55 17.87 6.11C19.42 7.67 20.28 9.73 20.28 11.92C20.28 16.46 16.59 20.15 12.05 20.15Z"/>
+                        </svg>
+                        <span>Start WhatsApp Consultation</span>
+                    </a>
+                    <a href="#calculator" class="btn btn-site-visit">
+                        Schedule a Site Visit
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 10. Footer -->
+    <footer class="footer">
+        <div class="section-container">
+            <div class="footer-grid">
+                <!-- Column 1: Brand & Social -->
+                <div class="footer-brand-col">
+                    <img src="assets/pip-logo-footer.png" alt="Pip Energy" class="footer-logo">
+                    <p class="footer-tagline">Clean energy for Nigeria. Built to last.</p>
+                    <div class="footer-social-links">
+                        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Instagram">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="2" width="20" height="20" rx="5"/>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                            </svg>
+                        </a>
+                        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Twitter / X">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                            </svg>
+                        </a>
+                        <a href="https://wa.me/2348000000000" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="WhatsApp">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2ZM12.05 20.15C10.57 20.15 9.12 19.76 7.85 19.01L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 14.99 3.81 13.47 3.81 11.91C3.81 7.37 7.5 3.69 12.05 3.69C14.25 3.69 16.31 4.55 17.87 6.11C19.42 7.67 20.28 9.73 20.28 11.92C20.28 16.46 16.59 20.15 12.05 20.15Z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Column 2: Solutions -->
+                <div class="footer-links-col">
+                    <h5 class="footer-heading">Solutions</h5>
+                    <ul class="footer-links-list">
+                        <li><a href="#solutions">Residential Solutions</a></li>
+                        <li><a href="#solutions">Commercial Solar</a></li>
+                        <li><a href="#process">Maintenance Plans</a></li>
+                        <li><a href="#shield">Pip Shield Protection</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Resources -->
+                <div class="footer-links-col">
+                    <h5 class="footer-heading">Resources</h5>
+                    <ul class="footer-links-list">
+                        <li><a href="#calculator">Savings Calculator</a></li>
+                        <li><a href="#projects">Project Portfolio</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 4: Company -->
+                <div class="footer-links-col">
+                    <h5 class="footer-heading">Company</h5>
+                    <ul class="footer-links-list">
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#process">Our Process</a></li>
+                        <li><a href="#contact">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bottom Bar -->
+            <div class="footer-bottom-bar">
+                <p class="copyright-text">© 2026 Pip Energy Limited. All rights reserved. Clean energy for Nigeria.</p>
+                <div class="footer-legal-links">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="privacy.html">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
