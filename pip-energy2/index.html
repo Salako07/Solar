@@ -134,13 +134,15 @@
             <div class="projects-body">
                 <div class="projects-media">
                     <div class="projects-frame">
-                        <img id="projectImage" src="assets/project-ikeja-gas-1.jpeg" alt="Gas station solar installation in Ikeja, Lagos">
+                        <img id="projectImage" src="assets/project-ikeja-gas-1.jpeg" alt="Gas station solar installation in Ikeja, Lagos - view 1">
+                        <span class="project-badge" id="projectBadge">Commercial</span>
+                        <div class="photo-dots" id="photoDots" aria-label="Project photos"></div>
                     </div>
                     <div class="projects-notch">
-                        <button class="round-btn round-btn-ghost" id="projectPrev" aria-label="Previous project">
+                        <button class="round-btn round-btn-ghost" id="projectPrev" aria-label="Previous photo">
                             <svg viewBox="0 0 24 24" fill="none"><path d="M19 12H5M11 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                         </button>
-                        <button class="round-btn" id="projectNext" aria-label="Next project">
+                        <button class="round-btn" id="projectNext" aria-label="Next photo">
                             <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                         </button>
                     </div>
@@ -160,14 +162,17 @@
                     </div>
                 </div>
             </div>
-            <div class="projects-info" aria-live="polite">
-                <h3 class="project-title" id="projectTitle">Gas Station Solar Installation</h3>
-                <p class="project-location">
-                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="9.5" r="2.5" stroke="currentColor" stroke-width="2"/></svg>
-                    <span id="projectLocation">Ikeja, Lagos</span>
-                </p>
-                <p class="project-desc" id="projectDesc">Commercial rooftop installation providing reliable power for continuous gas station operations, reducing dependency on generators and grid.</p>
-                <a href="#calculator" class="btn btn-primary">Start Your Project <span class="btn-icon" aria-hidden="true"></span></a>
+            <div class="projects-bottom">
+                <div class="projects-info" aria-live="polite">
+                    <h3 class="project-title" id="projectTitle">Gas Station Solar Installation</h3>
+                    <p class="project-location">
+                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="9.5" r="2.5" stroke="currentColor" stroke-width="2"/></svg>
+                        <span id="projectLocation">Ikeja, Lagos</span>
+                    </p>
+                    <p class="project-desc" id="projectDesc">Commercial rooftop installation providing reliable power for continuous gas station operations, reducing dependency on generators and grid.</p>
+                    <a href="#calculator" class="btn btn-primary">Start Your Project <span class="btn-icon" aria-hidden="true"></span></a>
+                </div>
+                <div class="project-list" id="projectList" role="tablist" aria-label="Our projects"></div>
             </div>
         </section>
 

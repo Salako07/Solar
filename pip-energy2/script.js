@@ -93,41 +93,41 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // ======================================================================
-    // Projects carousel
+    // Projects — featured project with photo gallery, plus the full list
     // ======================================================================
 
     const projects = [
         {
             title: 'Gas Station Solar Installation',
             location: 'Ikeja, Lagos',
-            image: 'assets/project-ikeja-gas-1.jpeg',
-            alt: 'Gas station solar installation in Ikeja, Lagos',
+            category: 'Commercial',
+            photos: ['assets/project-ikeja-gas-1.jpeg', 'assets/project-ikeja-gas-2.jpeg'],
             size: 30, inverter: 30, storage: 60,
             description: 'Commercial rooftop installation providing reliable power for continuous gas station operations, reducing dependency on generators and grid.'
         },
         {
             title: 'Co-working Hub Solar Installation',
             location: 'Lagos, Nigeria',
-            image: 'assets/s21.jpeg',
-            alt: 'Co-working hub solar installation in Lagos',
+            category: 'Commercial',
+            photos: ['assets/s21.jpeg', 'assets/s22.jpeg', 'assets/s23.jpeg', 'assets/s24.jpeg'],
             size: 70, inverter: 60, storage: 150,
-            description: 'Large-scale commercial installation powering a modern co-working hub with reliable, uninterrupted energy. Advanced battery storage ensures 24/7 operations.'
+            description: 'Large-scale commercial installation powering a modern co-working hub with reliable, uninterrupted energy. Advanced battery storage ensures 24/7 operations for businesses and entrepreneurs.'
         },
         {
             title: 'Premium Residential Solar System',
             location: 'Lagos, Nigeria',
-            image: 'assets/s31.png',
-            alt: 'Residential solar installation in Lagos',
+            category: 'Residential',
+            photos: ['assets/s31.png', 'assets/s32.jpeg'],
             size: 20.6, inverter: 20, storage: 60,
-            description: 'High-performance residential installation delivering complete energy independence, with seamless power backup and grid-tie capabilities.'
+            description: 'High-performance residential installation delivering complete energy independence. Premium system designed for modern living with seamless power backup and grid-tie capabilities.'
         },
         {
             title: 'Hospital Solar Installation',
             location: 'Abia State, Nigeria',
-            image: 'assets/s41.jpeg',
-            alt: 'Hospital solar installation in Abia State',
+            category: 'Healthcare',
+            photos: ['assets/s41.jpeg'],
             size: 15.3, inverter: 16, storage: 30,
-            description: 'Critical healthcare infrastructure powered by reliable solar energy, ensuring uninterrupted power for life-saving medical equipment.'
+            description: 'Critical healthcare infrastructure powered by reliable solar energy. Ensuring uninterrupted power supply for life-saving medical equipment and emergency operations.'
         }
     ];
 
@@ -139,15 +139,31 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const projectImage = document.getElementById('projectImage');
+    const projectBadge = document.getElementById('projectBadge');
+    const photoDots = document.getElementById('photoDots');
     const projectTitle = document.getElementById('projectTitle');
     const projectLocation = document.getElementById('projectLocation');
     const projectDesc = document.getElementById('projectDesc');
+    const projectList = document.getElementById('projectList');
     const gauges = document.querySelectorAll('.gauge');
     let projectIndex = 0;
+    let photoIndex = 0;
     let gaugesVisible = false;
 
-    // Preload project images so switching is instant
-    projects.forEach(p => { const img = new Image(); img.src = p.image; });
+    // Preload project photos so switching is instant
+    projects.forEach(p => p.photos.forEach(src => { const img = new Image(); img.src = src; }));
+
+    projectList.innerHTML = projects.map((p, i) => `
+        <button type="button" class="project-item" role="tab" data-index="${i}" aria-selected="false">
+            <span class="project-item-num">${String(i + 1).padStart(2, '0')}</span>
+            <span class="project-item-text">
+                <strong>${p.title}</strong>
+                <span>${p.location} &middot; ${p.size} kWp</span>
+            </span>
+            <span class="project-item-tag">${p.category}</span>
+        </button>
+    `).join('');
+    const projectItems = projectList.querySelectorAll('.project-item');
 
     const updateGauges = () => {
         const project = projects[projectIndex];
@@ -158,24 +174,62 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    const showProject = (index) => {
-        projectIndex = (index + projects.length) % projects.length;
+    const renderPhoto = () => {
         const project = projects[projectIndex];
         projectImage.classList.add('is-fading');
         window.setTimeout(() => {
-            projectImage.src = project.image;
-            projectImage.alt = project.alt;
+            projectImage.src = project.photos[photoIndex];
+            projectImage.alt = `${project.title} in ${project.location} - view ${photoIndex + 1}`;
             projectImage.classList.remove('is-fading');
         }, prefersReducedMotion ? 0 : 250);
+        photoDots.innerHTML = project.photos.length > 1
+            ? project.photos.map((_, i) => `<button type="button" class="photo-dot${i === photoIndex ? ' is-active' : ''}" data-photo="${i}" aria-label="Photo ${i + 1} of ${project.photos.length}"></button>`).join('')
+            : '';
+    };
+
+    const showProject = (index, photo = 0) => {
+        projectIndex = (index + projects.length) % projects.length;
+        photoIndex = photo === 'last' ? projects[projectIndex].photos.length - 1 : photo;
+        const project = projects[projectIndex];
         projectTitle.textContent = project.title;
         projectLocation.textContent = project.location;
         projectDesc.textContent = project.description;
+        projectBadge.textContent = project.category;
+        projectItems.forEach((item, i) => {
+            item.classList.toggle('is-active', i === projectIndex);
+            item.setAttribute('aria-selected', String(i === projectIndex));
+        });
+        renderPhoto();
         updateGauges();
     };
 
-    document.getElementById('projectPrev').addEventListener('click', () => showProject(projectIndex - 1));
-    document.getElementById('projectNext').addEventListener('click', () => showProject(projectIndex + 1));
-    updateGauges();
+    // Arrows step through every photo, moving on to the next project at the end
+    const stepPhoto = (dir) => {
+        const count = projects[projectIndex].photos.length;
+        const next = photoIndex + dir;
+        if (next >= 0 && next < count) {
+            photoIndex = next;
+            renderPhoto();
+        } else {
+            showProject(projectIndex + dir, dir > 0 ? 0 : 'last');
+        }
+    };
+
+    document.getElementById('projectPrev').addEventListener('click', () => stepPhoto(-1));
+    document.getElementById('projectNext').addEventListener('click', () => stepPhoto(1));
+
+    photoDots.addEventListener('click', (e) => {
+        const dot = e.target.closest('.photo-dot');
+        if (!dot) return;
+        photoIndex = Number(dot.dataset.photo);
+        renderPhoto();
+    });
+
+    projectItems.forEach(item => {
+        item.addEventListener('click', () => showProject(Number(item.dataset.index)));
+    });
+
+    showProject(0);
 
     // ======================================================================
     // Process stepper
