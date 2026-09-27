@@ -255,8 +255,8 @@ document.addEventListener('DOMContentLoaded', () => {
             alt: 'Solar panels installed on a commercial rooftop'
         },
         {
-            title: 'Pip Shield Aftercare',
-            description: 'Pip Shield covers your system with insurance and operations & maintenance plans, so there are no unexpected costs after installation.',
+            title: 'Support & Maintenance',
+            description: 'We provide guidance on system operation and are available to support you after installation.',
             image: 'assets/s24.jpeg',
             alt: 'Completed solar installation'
         }
@@ -302,14 +302,6 @@ document.addEventListener('DOMContentLoaded', () => {
     stepDots.forEach(dot => {
         dot.addEventListener('click', () => {
             showStep(Number(dot.dataset.step));
-            startStepTimer();
-        });
-    });
-
-    // "Pip Shield" links (nav and footer) open the aftercare step
-    document.querySelectorAll('a[href="#pip-shield"]').forEach(link => {
-        link.addEventListener('click', () => {
-            showStep(3);
             startStepTimer();
         });
     });
@@ -557,7 +549,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ======================================================================
 
     const revealTargets = document.querySelectorAll(
-        '.metrics, .technology, .projects, .process, .footprint, .calculator, .cta, .footer'
+        '.metrics, .technology, .projects, .process, .shield, .footprint, .calculator, .cta, .footer'
     );
 
     if ('IntersectionObserver' in window && !prefersReducedMotion) {
